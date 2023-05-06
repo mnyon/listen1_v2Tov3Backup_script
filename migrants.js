@@ -1,7 +1,6 @@
 const fs = require('fs');
-const v2Backup = JSON.parse(fs.readFileSync('./my.json', 'utf-8'));
+const v2Backup = JSON.parse(fs.readFileSync('./listen1_backup.json', 'utf-8'));
 
-// init the basic code
 let setting = {
     language: v2Backup.language,
     theme: v2Backup.theme,
@@ -209,7 +208,7 @@ function setPlayerSetting() {
     // console.log(playerSettingsValue);
 }
 
-function setPlaylistOrder(playlists,v3DefaultSettings) {
+function setPlaylistOrder(playlists, v3DefaultSettings) {
     const myPlaylistIds = [];
 
     for (const playlist of playlists) {
@@ -225,8 +224,6 @@ function setPlaylistOrder(playlists,v3DefaultSettings) {
         }
     }
 }
-
-
 
 function setCurrentPlayingTrack(id, tracks) {
     for (let i = 0; i < tracks.length; i++) {
@@ -253,7 +250,7 @@ function configV3Backup() {
     }
     setPlayerSetting()
     setCurrentPlayingTrack(setting.playerSetting.nowplaying_track_id, v3Backup["Tracks"]);
-    setPlaylistOrder(v3Backup.Playlists,v3_default_settings);
+    setPlaylistOrder(v3Backup.Playlists, v3_default_settings);
     v3Backup.Settings = v3_default_settings;
     console.log(JSON.stringify(v3Backup))
     return v3Backup
@@ -261,7 +258,7 @@ function configV3Backup() {
 
 function exportToJsonFile(data, filePath) {
     const jsonString = JSON.stringify(data, null, 2);
-
+    
     fs.writeFile(filePath, jsonString, 'utf-8', (err) => {
         if (err) {
             console.error('写入文件时发生错误:', err);
@@ -271,8 +268,11 @@ function exportToJsonFile(data, filePath) {
     });
 }
 
-// 示例用法：
-const v3BackupData = configV3Backup();
-const filePath = './output.json';
+function exportV3Backup() {
+    const v3BackupData = configV3Backup();
+    const filePath = './listen1_backup_v3.json';
+    exportToJsonFile(v3BackupData, filePath);
+}
 
-exportToJsonFile(v3BackupData, filePath);
+exportV3Backup()
+
