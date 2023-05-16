@@ -142,7 +142,7 @@ function getMyPlaylist(v2BackupJSON) {
     return formattedLists;
 }
 function getFavoritePlaylist(v2BackupJSON) {
-    const favoritePlayerLists = v2BackupJSON.favoriteplayerlists;
+    const favoritePlayerLists = v2BackupJSON.favoriteplayerlists || [];
     const formattedLists = [];
 
     for (let i = 0; i < favoritePlayerLists.length; i++) {
