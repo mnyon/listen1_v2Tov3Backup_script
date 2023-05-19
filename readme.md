@@ -9,11 +9,9 @@ Before running this script, make sure you have Node.js installed. You can downlo
 ## Usage
 
 1. Prepare the V2 backup file: Rename your V2 backup file to `listen1_backup.json` and ensure it is located in the same directory as the script file.
-
 2. Download the migration script: Download the `migrants.js` file and place it in the same directory as the V2 backup file.
-
 3. Run the migration script: In the command line, navigate to the directory containing the V2 backup file and `migrants.js`, and execute the following command:
-   
+
    ```
    node migrants.js
    ```
@@ -22,7 +20,18 @@ Before running this script, make sure you have Node.js installed. You can downlo
 
 4. Import the V3 backup: Import the generated `listen1_backup_v3.json` file into Listen1 V3 version.
 
+Now the typescript version is finished,switch branch to dev and then install the dependence.
 
+```
+npm install -g typescript
+npm i --save-dev @types/node
+```
+
+And then compile the typescript code to javascript code.You will get a file named `migrants.js`.
+
+```
+tsc migrants.ts
+```
 
 ## Additional Information
 
@@ -39,20 +48,29 @@ If you encounter any issues or need further assistance during the process, pleas
 ## 使用方法
 
 1. 准备 V2 版本备份文件：将您的 V2 版本备份文件重命名为 `listen1_backup.json`，并确保它位于脚本文件所在的目录中。
-
 2. 下载迁移脚本：下载 `migrants.js` 文件并将其放置在与 V2 版本备份文件相同的目录中。
-
 3. 执行迁移脚本：在命令行中，进入包含 V2 版本备份文件和 `migrants.js` 的目录，并执行以下命令：
-   
+
    ```
    node migrants.js
    ```
-   
+
    执行该命令后，脚本将生成一个名为 `listen1_backup_v3.json` 的 V3 版本备份文件。
-4. 导入 V3 版本备份：将生成的 `listen1_backup_v3.json` 文件导入到 Listen1 的 V3 版本中。
-   
-   
-   
-   附加信息
-   
-   如果在使用过程中遇到任何问题或需要进一步的帮助，请随时与我们联系。
+4. 导入 V3 版本备份：将生成的 `listen1_backup_v3.json` 文件导入到 Listen1 的 V3 版本中。。
+
+现在Typescript版本已经完成，切换源码分支为dev分支后安装依赖
+
+```
+npm install -g typescript
+npm i --save-dev @types/node
+```
+
+接下来编译脚本后得到 `migrants.js`文件即可由Node运行。
+
+```
+tsc migrants.ts
+```
+
+附加信息
+
+如果在使用过程中遇到任何问题或需要进一步的帮助，请随时与我们联系
